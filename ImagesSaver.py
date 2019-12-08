@@ -23,6 +23,5 @@ while image_number <= 5:
     else:
         url_image = images
     download_jpg(url_image, 'static/', image_number)
-    print(url_var)
     image_number += 1
     url_var = url_var - timedelta(1)
