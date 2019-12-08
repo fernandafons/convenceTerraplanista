@@ -1,9 +1,9 @@
 import urllib.request
 from bs4 import BeautifulSoup as Soup
-from datetime import date
+from datetime import date, timedelta
 # ----------------------------------------------------------
 image_number = 1
-url_var = (date.today().strftime("%y%m%d"))
+url_var = (date.today())
 
 
 def download_jpg(url, file_path, doc_name):
@@ -12,7 +12,7 @@ def download_jpg(url, file_path, doc_name):
 
 
 while image_number <= 5:
-    my_url = 'https://apod.nasa.gov/apod/ap' + str(url_var) + '.html'
+    my_url = 'https://apod.nasa.gov/apod/ap' + url_var.strftime("%y%m%d") + '.html'
     uClient = urllib.request.urlopen(my_url)
     page_html = uClient.read()
     uClient.close()
@@ -23,5 +23,6 @@ while image_number <= 5:
     else:
         url_image = images
     download_jpg(url_image, 'static/', image_number)
+    print(url_var)
     image_number += 1
-    url_var = int(url_var) - 1
+    url_var = url_var - timedelta(1)
