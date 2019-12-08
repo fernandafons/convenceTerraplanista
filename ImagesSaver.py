@@ -27,6 +27,7 @@ while image_number <= 5:
         url_image = images
 
     download_jpg(url_image, 'images/', image_number)
+    download_jpg(url_image, 'static/', image_number)
     image_number += 1
     urlvar = int(urlvar) - 1
     urlvar = str(urlvar)
